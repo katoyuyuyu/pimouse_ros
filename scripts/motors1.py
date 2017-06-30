@@ -28,7 +28,6 @@ class Motor():
 
     def set_raw_freq(self,left_hz,right_hz):
         if not self.is_on:
-
             rospy.logerr("not enpowered")
             return
 

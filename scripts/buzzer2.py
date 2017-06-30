@@ -4,7 +4,7 @@ from std_msgs.msg import UInt16
 
 def recv_buzzer(data):
     rospy.loginfo(type(data))
-    roppy.loginfo(data.data)
+    rospy.loginfo(data.data)
 
 if __name__ == '__main__':
     rospy.init_node('buzzer')
