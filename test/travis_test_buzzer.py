@@ -6,11 +6,11 @@ import time
 from std_msgs.msg import UInt16
 
 class BuzzerTest(unittest.TestCase):
-    dev test_node_exist(self):
+    def test_node_exist(self):
         nodes = rosnode.get_node_names()
         self.assertIn('/buzzer',nodes, "node does not exist")
 
-    dev test_put_value(self):
+    def test_put_value(self):
         pub = rospy.Publisher('/buzzer', UInt16)
         for i in range(10)
             pub.publish(1234)
