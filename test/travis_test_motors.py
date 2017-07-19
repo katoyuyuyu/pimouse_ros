@@ -23,7 +23,7 @@ class MotorTest(unittest.TestCase):
 
     def test_node_exist(self):
         nodes = rosnode.get_node_names()
-        self.assertIn('/motors', node, "node does not exist")
+        self.assertIn('/motors', nodes, "node does not exist")
 
     def test_put_freq(self):
         pub = rospy.Publisher('/motor_raw', MotorFreqs)
@@ -53,7 +53,7 @@ class MotorTest(unittest.TestCase):
         self.file_check("rtmotor_raw_r0",0,"don't stop after 1[s]")
         self.file_check("rtmotor_raw_10",0,"don't stop after 1[s]")
 
-    def test_on_off(seif):
+    def test_on_off(self):
         off = rospy.ServiceProxy('/motor_off', Trigger)
         ret = off()
         self.assertEqual(ret.success, True, "motor off does not succeeded")
