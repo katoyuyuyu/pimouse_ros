@@ -22,8 +22,8 @@ class BuzzerTest(unittest.TestCase):
             time.sleep(0.1)
 
         with open("/dev/rtbuzzer0","r") as f:
-                data = f.readline()
-                self.assertEqual(data,"1234\n","value does not written to rtbuzzer0")
+            data = f.readline()
+            self.assertEqual(data,"1234\n","value does not written to rtbuzzer0")
 
     def test_music(self):
         goal = MusicGoal()
@@ -36,7 +36,7 @@ class BuzzerTest(unittest.TestCase):
 
         self.assertTrue(self.client.get_result(),"invalid result")
         self.assertEqual(goal.freqs,self.device_values,"invalid feedback:"
-                        + ",".join([str(e) for e in self.device_values]))
+                + ",".join([str(e) for e in self.device_values]))
 
         self.device_values = []
         self.client.send_goal(goal,feedback_cb=self.feedback_cb)
@@ -53,6 +53,6 @@ class BuzzerTest(unittest.TestCase):
 if __name__ == '__main__':
     time.sleep(3)
     rospy.init_node('travis_test_buzzer')
-    rostest.rosrun('pimouse_ros', 'travis_test_buzzer',BuzzerTest)
+    rostest.rosrun('pimouse_ros','travis_test_buzzer',BuzzerTest)
 
 
