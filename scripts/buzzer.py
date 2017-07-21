@@ -9,11 +9,8 @@ def write_freq(hz=0):
     try:
         with open(bfile,"w") as f:
             f.write(str(hz) + "\n")
-    except I0Error:
+    except IOError:
         rospy.logerr("can't write to " + bfile)
-
-def recv_buzzer(data):
-    write_freq(data.data)
 
 def exec_music(goal):
     r = MusicResult()
@@ -34,6 +31,9 @@ def exec_music(goal):
 
     r.finished = True
     music.set_succeeded(r)
+
+def recv_buzzer(data):
+    write_freq(data.data)
 
 if __name__ == '__main__':
     rospy.init_node('buzzer')
